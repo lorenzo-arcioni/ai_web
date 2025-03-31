@@ -699,3 +699,4 @@ Le estensioni del modello di regressione lineare permettono di catturare relazio
 
 **Risorse aggiuntive:**
 - *The Elements of Statistical Learning* - Hastie, Tibshirani, Friedman.
+- *Introduction to Statistical Learning* - James, Witten, Hastie, Tibshirani.

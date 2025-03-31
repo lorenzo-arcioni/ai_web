@@ -19,3 +19,4 @@ Alcune metriche di valutazione dei clustering sono riportate nel file [[Valutazi
 ## Collegamenti utili 
 - [[Distanze matematiche]] (es. Euclidea, Manhattan) 
 - [[Distribuzioni di probabilità]] (es. Gaussiane) 
+- [[Algebra lineare]] (matrici e spazi vettoriali)

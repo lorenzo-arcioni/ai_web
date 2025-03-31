@@ -103,3 +103,4 @@ Assumendo che l'algoritmo termini in $R$ iterazioni, abbiamo una complessità to
 
 ## Conclusioni
 
+Il fatto che all'inizio vengano scelti i centroidi in modo casuale, può comportare un clustering non sempre sub-ottimale. Per mitigare il problema, si esegue l'algoritmo K-means più volte, in modo da avere diverse versioni di assegnazione iniziale dei centroidi, potendo scegliere la migliore. Un approccio che cerca di mitigare il problema della scelta randomica iniziale dei centroidi è il [[K-means++]].

@@ -34,3 +34,4 @@ Il benefit $B$ aumenta al crescere del numero di clusters, ma $-P$ cerca di smor
 ![[elbow-method-clustering.svg]]
 ## Varianti alternative
 - [[K-Medoids]]
+- [[BRF K-means]]

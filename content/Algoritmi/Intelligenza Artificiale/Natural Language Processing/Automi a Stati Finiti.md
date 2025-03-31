@@ -8,6 +8,8 @@ Un automa a stati finiti è una **quintupla** $(Q, \Sigma, \delta, q_0, A)$, dov
 - **$q_0$**: Stato iniziale (es. $q_0$).
 - **$A$**: Insieme di stati accettanti/finali (es. $\{q_4\}$).
 
+---
+
 ## Esempio: Il "Linguaggio delle Pecore"
 ### Descrizione
 - **Linguaggio $L_{\text{sheep}}$**: Stringhe che iniziano con "b", seguite da almeno due "a", e terminano con "!" (es. "baa!", "baaaaa!", ...).
@@ -25,6 +27,8 @@ Un automa a stati finiti è una **quintupla** $(Q, \Sigma, \delta, q_0, A)$, dov
 | $q_3$ | -        | $q_3$    | $q_4$    |
 | $q_4$ | -        | -        | -        |
 
+---
+
 ## Funzionamento di un FSA
 ### Processo di Riconoscimento
 1. **Input**: "baaa!"
@@ -32,11 +36,15 @@ Un automa a stati finiti è una **quintupla** $(Q, \Sigma, \delta, q_0, A)$, dov
 2. **Input**: "ba!"
    - $q_0 \xrightarrow{b} q_1 \xrightarrow{a} q_2$ → Esaurimento input in stato non finale → **Rifiutata**.
 
+---
+
 ## Accettatori vs. Generatori
 - **Accettatori**: Verificano se una stringa appartiene al linguaggio.
 - **Generatori**: Producono tutte le stringhe valide.  
 **Esempio generato**:  
 <img src="/static/images/tikz/dede56224f04bae018c7b65e1093559e.svg" style="width: 100%; height: auto; max-height: 600px;" class="tikz-svg" />
+
+---
 
 ## Relazione tra Regex e FSA
 ### Equivalenze
@@ -49,6 +57,8 @@ Un automa a stati finiti è una **quintupla** $(Q, \Sigma, \delta, q_0, A)$, dov
 **Esempio**: Regex `(a|b)*c`  
 <img src="/static/images/tikz/eff741d9ebf0391963103c5db1379ad9.svg" style="width: 100%; height: auto; max-height: 600px;" class="tikz-svg" />
 
+---
+
 ## Esercizio Guidato
 ### Dati
 - $L_1 = \\{\text{nlp}, \text{nat\_lang\_proc}\\}$
@@ -59,11 +69,16 @@ Un automa a stati finiti è una **quintupla** $(Q, \Sigma, \delta, q_0, A)$, dov
 **FSA per $L_3$**:  
 <img src="/static/images/tikz/8fc84c381c7c122012ead33381b4da43.svg" style="width: 100%; height: auto; max-height: 600px;" class="tikz-svg" />
 
+---
+
 ## Applicazioni in NLP
 ### Tokenizzazione
 <img src="/static/images/tikz/a13c524a49c3e0197788b6ee60c25376.svg" style="width: 100%; height: auto; max-height: 600px;" class="tikz-svg" />
+
+---
 
 > **Etichette**: #FSA #Regex #LinguaggiFormali  
 > **Collegamenti**: [[Espressioni Regolari]], [[Teoria degli Automi]]  
 > **Risorse**:  
 > - [Speech and Language Processing (Jurafsky & Martin)](https://web.stanford.edu/~jurafsky/slp3/)  
+> - [Simulatore FSA Online](https://ivanzuzak.info/noam/webapps/fsm_simulator/)

@@ -66,9 +66,14 @@ def remove_math_paragraphs(html_content):
 
 def find_markdown_file(name):
     """Cerca un file Markdown nell'albero delle directory."""
+    # Normalizza il nome rimuovendo spazi e estensioni .md
+    normalized_name = name.strip().lower().removesuffix('.md')
+    target_filename = f"{normalized_name}.md"
+
     for root, _, files in os.walk(CONTENT_DIR):
         for file in files:
-            if file.lower() == f"{name.lower()}.md":
+            # Confronta i nomi in modo case-insensitive
+            if file.lower() == target_filename:
                 return os.path.relpath(os.path.join(root, file), CONTENT_DIR)
     return None
 
@@ -81,27 +86,21 @@ def extract_title_from_markdown(md_content):
 def process_obsidian_links(html_content):
     """Sostituisce i link Obsidian con link funzionanti."""
     def replace_link(match):
-        # Estrae sia il link che l'eventuale testo alternativo
-        link_parts = match.groups()
-        file_name = link_parts[0]
-        display_text = link_parts[1] or file_name  # Usa il testo alternativo se presente
-        
-        # Trova il file corrispondente
+        file_name = match.group(1).strip()  # Rimuove spazi accidentali
+        display_text = match.group(2).strip() if match.group(2) else file_name
+
         file_path = find_markdown_file(file_name)
         
         if file_path:
-            # Rimuove l'estensione .md
-            link = f"/post/{file_path.replace('.md', '')}"
+            link = f"/post/{file_path.removesuffix('.md')}"
             return f'<a href="{link}" class="simple-link">{display_text}</a>'
-        else:
-            # Link non trovato, lo rende grigio
-            return f'<span class="broken-link">{display_text}</span>'
+        return f'<span class="broken-link">{display_text}</span>'
     
-    # Pattern migliorato per catturare entrambi i casi
     return re.sub(
-        r'\[\[([^|\]]+)(?:\|([^\]]+))?\]\]', 
+        r'\[\[(.*?)(?:\|(.*?))?\]\]',  # Pattern migliorato
         replace_link, 
-        html_content
+        html_content, 
+        flags=re.DOTALL
     )
 
 def build_hierarchy(categories):
@@ -159,6 +158,13 @@ def get_article(full_path: str):
 
         # Salta la prima riga
         md_content = "\n".join(md_content.split("\n")[1:])
+
+        # Sostituisci i path delle immagini con il percorso corretto
+        md_content = re.sub(
+            '/home/lorenzo/Documenti/GitHub/my-obsidian-vault/images',
+            '/static/images/posts',
+            md_content
+        )
         
         # Proteggi i blocchi matematici
         protected_content, math_blocks = protect_math_content(md_content)
@@ -166,7 +172,17 @@ def get_article(full_path: str):
         # Converti Markdown
         html_content = markdown.markdown(
             protected_content, 
-            extensions=['fenced_code', 'tables', 'nl2br', 'md_in_html']
+            extensions=[
+                        'fenced_code',
+                        'tables',
+                        'nl2br',
+                        'md_in_html',
+                        'extra',
+                        'attr_list',
+                        'smarty',
+                        'toc',
+                        'admonition'
+                    ]
         )
         
         # Ripristina i blocchi matematici

@@ -140,3 +140,4 @@ Identificazione dei confini tra frasi in un testo.
 **Risorse**:  
 - [Speech and Language Processing (Jurafsky & Martin)](https://web.stanford.edu/~jurafsky/slp3/)  
 - [Byte-Pair Encoding Paper (Sennrich et al.)](https://arxiv.org/abs/1508.07909)  
+- [Porter Stemmer Algorithm](https://tartarus.org/martin/PorterStemmer/)  

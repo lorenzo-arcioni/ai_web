@@ -57,3 +57,4 @@
   - Riconoscere intenti e parole chiave nei chatbot per ottimizzare le risposte automatiche.  
 
 > **Etichette**: #Regex #Applicazioni #NLP  
+> **Collegamenti**: [[Espressioni Regolari]], [[Elaborazione del Testo]], [[Introduzione all'NLP]]

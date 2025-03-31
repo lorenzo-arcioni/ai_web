@@ -18,3 +18,4 @@ Questo ci porta a porci alcune domande chiave:
 - [[Metodo dei Minimi Quadrati Ordinari (OLS)]]
 - [[Modelli Lineari con Caratteristiche Non Lineari]]
 - [[Selezione del Modello]]
+- [[Overfitting e Underfitting]]

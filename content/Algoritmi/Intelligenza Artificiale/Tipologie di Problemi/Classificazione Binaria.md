@@ -74,3 +74,4 @@ Questo perché il logit trasforma un rapporto di probabilità $\in [0, 1]$ in un
 
 ## **Collegamento con la Regressione Logistica**
 
+La regressione logistica è un modello **discriminativo**, che apprende direttamente $p(y \mid \mathbf{x})$ senza modellare $p(\mathbf{x} \mid y)$. Può essere vista come un caso particolare dell'**Analisi Discriminante Lineare (LDA)** sotto certe assunzioni sulle distribuzioni dei dati.

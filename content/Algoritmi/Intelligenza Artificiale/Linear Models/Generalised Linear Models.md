@@ -142,3 +142,4 @@ I GLMs possono essere combinati con funzioni di base (ad esempio, polinomi o spl
 
 ## Conclusione
 
+I **Generalized Linear Models (GLMs)** sono uno strumento potente e versatile per l'analisi statistica e il machine learning. Grazie alla loro flessibilità e alla capacità di adattarsi a diversi tipi di dati, i GLMs sono ampiamente utilizzati in molti campi applicativi. Tuttavia, è importante comprendere le loro assunzioni e limitazioni per utilizzarli in modo efficace.

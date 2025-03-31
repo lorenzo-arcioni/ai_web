@@ -171,3 +171,4 @@ La regolarizzazione è uno strumento essenziale per migliorare la generalizzazio
 - [[Regressione Polinomiale]]
 - [[Minimi Quadrati Ordinari (OLS)]]
 - [[Teorema di Stone-Weierstrass]]
+- [[Selezione del Modello]]

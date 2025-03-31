@@ -1,12 +1,23 @@
 #!/bin/bash
 
-content="Algoritmi"
+content_1="Algoritmi"
+content_2="Calcolo"
+content_3="Algebra"
+content_4="Probabilità"
+content_5="Statistica"
 
-echo "Updating content:" $content
+echo "Updating content"
 
-rm -rf ./content/$content
-cp -r ../my-obsidian-vault/00_Informatica/$content ./content/$content
+rm -rf ./content/*
+rm -f ./static/images/posts/*
 
-echo "Done"
+cp -rf ../my-obsidian-vault/00_Informatica/$content_1 ./content/
+cp -rf ../my-obsidian-vault/01_Matematica/$content_2 ./content/
+cp -rf ../my-obsidian-vault/01_Matematica/$content_3 ./content/
+cp -rf ../my-obsidian-vault/01_Matematica/$content_4 ./content/
+cp -rf ../my-obsidian-vault/01_Matematica/$content_5 ./content/
+cp -rf ../my-obsidian-vault/images/* ./static/images/posts/
 
 ./update_tikz.sh
+
+echo "Done"

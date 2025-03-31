@@ -36,3 +36,4 @@ I linguaggi regolari sono **chiusi** sotto:
   - **FSA**: Due stati (pari/dispari), con transizioni per 'a' che alternano stati.
 
 > **Etichette**: #LinguaggiFormali #Regex  
+> **Collegamenti**: [[Automi a Stati Finiti]], [[Teoria della Computazione]]

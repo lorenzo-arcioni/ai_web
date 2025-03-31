@@ -20,7 +20,7 @@ process_file() {
     # Crea file temporaneo
     true > "$temp_file"
     
-    while IFS= read -r line; do
+    while IFS= read -r line || [ -n "$line" ]; do
         ((line_num++))
         
         # Rileva inizio blocco tikz

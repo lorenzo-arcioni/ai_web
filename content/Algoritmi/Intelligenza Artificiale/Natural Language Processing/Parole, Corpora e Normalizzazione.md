@@ -76,3 +76,4 @@ La segmentazione del testo in unità significative (token) è un passo fondament
 - **Tokenizzazione avanzata (BPE - Byte Pair Encoding)** → Usata in modelli come GPT e BERT per gestire sottoparole (es. "ri-cor-da-re").  
 
 > **Etichette**: #NLP #Tokenizzazione #Corpora  
+> **Collegamenti**: [[Elaborazione del Testo]], [[Espressioni Regolari]], [[Modelli Linguistici]]

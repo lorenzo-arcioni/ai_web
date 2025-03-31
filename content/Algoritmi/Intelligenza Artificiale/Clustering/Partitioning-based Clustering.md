@@ -116,3 +116,4 @@ Questo algoritmo non garantisce una soluzione ottima, perché potremmo fermarci 
 
 - Segmentazione clienti in ambito marketing. 
 - Clusterizzazione di documenti in [[Natural Language Processing]]. 
+- Compressione di immagini (es. riduzione di colori usando K-Means).

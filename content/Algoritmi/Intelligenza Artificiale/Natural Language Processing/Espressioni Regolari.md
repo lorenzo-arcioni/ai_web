@@ -131,3 +131,4 @@ I **registri** e i **gruppi di cattura** sono strumenti potenti per manipolare i
 
 - Etichette: #Regex #NLP #PatternMatching
     
+- Collegamenti: [[Introduzione all'NLP]], [[Elaborazione del Testo]]

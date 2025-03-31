@@ -95,3 +95,4 @@ La regressione polinomiale è uno strumento potente per modellare relazioni non 
 
 ## **Riferimenti**
 - Figura 3.3: Fit data with different poly degree.
+- Teorema 3.1 (Stone-Weierstrass): https://en.wikipedia.org/wiki/Stone%E2%80%93Weierstrass_theorem

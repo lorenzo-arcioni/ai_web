@@ -52,3 +52,4 @@ I modelli di rappresentazione del testo si sono evoluti notevolmente nel tempo, 
 ---
 
 **Etichette**: #NLP #WordEmbeddings #Transformer  
+**Collegamenti**: [[Deep Learning]], [[Introduzione all'NLP]]
