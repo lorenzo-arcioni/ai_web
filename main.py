@@ -165,6 +165,8 @@ def get_article(full_path: str):
             '/static/images/posts',
             md_content
         )
+
+        md_content = md_content.replace('`$`', '`\\$`')  # Escape del $ nei blocchi di codice
         
         # Proteggi i blocchi matematici
         protected_content, math_blocks = protect_math_content(md_content)
@@ -181,12 +183,18 @@ def get_article(full_path: str):
                         'attr_list',
                         'smarty',
                         'toc',
-                        'admonition'
+                        'admonition',
+                        'def_list',
+                        'footnotes',
+                        'sane_lists',
                     ]
         )
-        
+
         # Ripristina i blocchi matematici
         html_content = restore_math_content(html_content, math_blocks)
+
+        # Rimuovi \_ dal codice HTML
+        html_content = html_content.replace('\\_', '_')
         
         # Rimuovi paragrafi attorno alle equazioni
         html_content = remove_math_paragraphs(html_content)

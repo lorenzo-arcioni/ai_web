@@ -37,7 +37,7 @@ process_file() {
             
             # Genera hash del contenuto
             local tikz_hash=$(echo -n "$tikz_content" | md5sum | awk '{print $1}')
-            local svg_path="/static/images/tikz/${tikz_hash}.svg"
+            local svg_path="./static/images/tikz/${tikz_hash}.svg"
             
             # Se l'SVG non esiste, crealo
             if [ ! -f "$svg_path" ]; then
@@ -52,7 +52,7 @@ process_file() {
             fi
             
             # Aggiungi il riferimento all'immagine
-            echo "<img src=\"$svg_path\" style=\"width: 100%; height: auto; max-height: 600px;\" class=\"tikz-svg\" />" >> "$temp_file"
+            echo "<img src=\"${svg_path:1}\" style=\"width: 100%; height: auto; max-height: 600px;\" class=\"tikz-svg\" />" >> "$temp_file"
             replace_section=0
             continue
         fi
