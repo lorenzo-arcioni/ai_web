@@ -138,14 +138,15 @@ Qui, ogni parola dipende **da entrambe le precedenti**, anziché solo dall'ultim
 
 ### Differenze nei valori di $N$
 
-Un aspetto fondamentale nei modelli basati su n-grammi è la scelta del valore di $N$. Questo parametro determina quante parole precedenti vengono considerate nel calcolo della probabilità di una parola successiva.  
+Un aspetto fondamentale nei modelli basati su n-grammi è il valore di $N$. Questo parametro determina quante parole precedenti vengono considerate nel calcolo della probabilità di una parola successiva.  
 
 - **Un valore più grande di $N$ implica che:**  
   - Il modello ha **più informazioni sul contesto**, poiché considera una finestra più ampia di parole precedenti.  
   - Questo porta a una **maggiore capacità discriminativa**, cioè il modello è più preciso nel prevedere la parola successiva in base a un contesto più dettagliato.  
   - Tuttavia, **cresce il problema della scarsità dei dati** (*data sparseness*):  
     - Le combinazioni di parole diventano più numerose, quindi molte sequenze potrebbero non comparire mai nel dataset di addestramento.  
-    - Questo porta a difficoltà nella stima delle probabilità, poiché alcuni n-grammi potrebbero avere conteggi molto bassi o addirittura nulli.  
+    - Questo porta a difficoltà nella stima delle probabilità, poiché alcuni n-grammi potrebbero avere conteggi molto bassi o addirittura nulli.
+    - Le tecniche di [[Smoothing nei Modelli Linguistici|smoothing]] diventano cruciali e complesse.
 
 - **Un valore più piccolo di $N$ implica che:**  
   - Il modello ha **meno precisione**, poiché considera un contesto più limitato.  
@@ -156,7 +157,7 @@ In pratica, c'è un **compromesso** nella scelta di $N$:
 - Un valore più grande di $N$ aiuta a catturare meglio la struttura del linguaggio ma aumenta il rischio di dati insufficienti.  
 - Un valore più piccolo riduce la precisione ma garantisce un modello più stabile e generalizzabile.  
 
-Per affrontare il problema della scarsità dei dati nei modelli con $N$ elevato, si utilizzano tecniche come **smoothing**, **backoff** e **modelli neurali** come le reti ricorrenti (*RNN*) o i Transformer.
+Per affrontare il problema della scarsità dei dati nei modelli con $N$ elevato, si utilizzano tecniche come **[[Smoothing nei Modelli Linguistici|smoothing]]**, **[[Backoff nei Modelli Linguistici|backoff]]**, **[[Interpolazione Lineare|interpolazione]]** e **modelli neurali** come le reti ricorrenti (*RNN*) o i Transformer.
 
 ### Riassumendo
 I modelli **N-gram** approssimano la probabilità di sequenze di parole utilizzando contesti limitati di $N-1$ parole precedenti.  Se consideriamo una sequenza di parole $w_{1}^n = w_1, w_2, ..., w_n$ con $n$ parole, abbiamo:
@@ -267,10 +268,11 @@ I modelli linguistici basati su n-grammi presentano diverse limitazioni intrinse
   → **Impatto**:  
   - Frasi valide nel test set ottengono perplexity infinita.  
   - Impossibilità di generalizzare a combinazioni non viste (es. *"cane mangia kiwi"*).  
-  > *Soluzione*: Tecniche di smoothing (approfondite in dettaglio [[Smoothing|qui]]).
+  > *Soluzione*: Tecniche di smoothing (approfondite in dettaglio [[Smoothing nei Modelli Linguistici|qui]]).
 
 ### 2. Finestra Contestuale Limitata
-- **Dipendenza da N fissato**:  
+- **Dipendenza da N fissato**:
+  Con un modello basato su n-gram, il contesto considerato è limitato a $N-1$ parole.
   - Con N=3 (trigrammi), il modello ignora parole oltre le ultime 2:  
     *"Ieri ho visitato il museo egizio che ___"* → Il contesto rilevante ("museo") potrebbe essere troppo lontano.  
   - **Esempio**: In *"La ragazza con gli occhiali da sole che ___"*, la scelta di "indossava" vs "rompe" dipende da "occhiali", non dalle ultime 2 parole ("che" e "sole").
@@ -303,7 +305,9 @@ I modelli linguistici basati su n-grammi presentano diverse limitazioni intrinse
 
 - **Out-Of-Vocabulary (OOV)**:  
   Parole nuove (slang, nomi propri, errori) non presenti nel training set vengono gestite male:  
-  $$P(\text{"Il nuovo NFT ___"}) = 0 \quad \text{se "NFT" non è nel vocabolario}$$
+  $$
+  \mathbb P(\text{"Il nuovo NFT"}) = 0 \quad \text{se "NFT" non è nel vocabolario}
+  $$
 
 ### 6. Apprendimento Superficiale
 - **Modellano correlazioni, non causalità**:  
@@ -313,11 +317,14 @@ I modelli linguistici basati su n-grammi presentano diverse limitazioni intrinse
 
 - **Assenza di world knowledge**:  
   Non integrano informazioni esterne:  
-  $$P(\text{"Roma"} | \text{"capitale d'Italia è"}) = P(\text{"Roma"} | \text{"capitale d'Italia è"})$$  
+  $$P(\text{"Roma"} | \text{"La capitale d'Italia è"}) = 0$$  
   Anche se "Roma" è l'unica risposta corretta, il modello assegna probabilità basate solo sui bigrammi/trigrammi osservati.
 
-## Argomrnti Collegati
-
+## Argomenti Collegati
 - [[Valutazione dei Modelli di Linguaggio]]
+- [[Smoothing nei Modelli Linguistici]]
+- [[Pruning e Compressione nei Modelli NLP]]
+- [[Bias e Fairness nell'Elaborazione del Linguaggio Naturale]]
 
 ## Conclusione
+I modelli linguistici basati su n-gram hanno rappresentato una tappa fondamentale nello sviluppo dell'NLP, ma presentano notevoli limitazioni: dalla gestione della sparsenza e del problema degli n-grammi non osservati, alla finestra contestuale limitata e alla difficoltà nel modellare strutture linguistiche complesse. Inoltre, l'esponenziale crescita dello spazio delle combinazioni e la sensibilità ai bias del corpus di training evidenziano il bisogno di approcci più sofisticati. Questi limiti hanno favorito l'evoluzione verso modelli neurali e architetture transformer, capaci di integrare contesto e conoscenza semantica in maniera più efficace, aprendo la strada a progressi significativi nel campo dell'elaborazione del linguaggio naturale.
